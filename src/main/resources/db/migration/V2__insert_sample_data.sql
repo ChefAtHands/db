@@ -1,5 +1,4 @@
-INSERT INTO ingredient (name, category) VALUES ('Tomato', 'Vegetable');
-VALUES
+INSERT INTO ingredient (name, category) VALUES
     ('Mozzarella', 'Dairy'),
     ('Garlic', 'Vegetable'),
     ('Chicken Breast', 'Meat'),
