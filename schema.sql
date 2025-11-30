@@ -48,3 +48,46 @@ CREATE TABLE recipe_ingredients (
 -- Indexes
 CREATE UNIQUE INDEX ux_ingredients_name ON ingredients(name);
 CREATE INDEX ix_recipes_title ON recipes(title);
+
+-- Sample test users
+INSERT INTO users (name, email, password_hash) VALUES
+    ('John Doe', 'john@test.com', '$2a$10$dummyhashedpassword1'),
+    ('Jane Smith', 'jane@test.com', '$2a$10$dummyhashedpassword2'),
+    ('Test User', 'test@test.com', '$2a$10$dummyhashedpassword3');
+
+
+-- Sample data for ingredients
+INSERT INTO ingredients (name, category) VALUES
+    ('Mozzarella', 'Dairy'),
+    ('Garlic', 'Vegetable'),
+    ('Chicken Breast', 'Meat'),
+    ('Onion', 'Vegetable'),
+    ('Carrot', 'Vegetable'),
+    ('Potato', 'Vegetable'),
+    ('Tortilla', 'Grain'),
+    ('Banana', 'Fruit'),
+    ('Almonds', 'Nuts'),
+    ('Spinach', 'Vegetable'),
+    ('Salmon', 'Fish'),
+    ('Eggs', 'Dairy'),
+    ('Rice', 'Grain'),
+    ('Broccoli', 'Vegetable'),
+    ('Yogurt', 'Dairy'),
+    ('Beef', 'Meat'),
+    ('Cucumber', 'Vegetable'),
+    ('Bell Pepper', 'Vegetable'),
+    ('Oats', 'Grain'),
+    ('Strawberries', 'Fruit'),
+    ('Walnuts', 'Nuts'),
+    ('Zucchini', 'Vegetable'),
+    ('Shrimp', 'Seafood'),
+    ('Cabbage', 'Vegetable');
+
+
+    -- Sample user ingredients (John has some ingredients)
+INSERT INTO user_ingredients (user_id, ingredient_id, quantity) VALUES
+    (1, 1, '200g'),  -- John has Mozzarella
+    (1, 2, '5 cloves'),  -- John has Garlic
+    (1, 3, '500g'),  -- John has Chicken
+    (2, 8, '3 pieces'),  -- Jane has Bananas
+    (2, 12, '12 pieces');  -- Jane has Eggs
