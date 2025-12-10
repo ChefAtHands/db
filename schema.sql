@@ -1,7 +1,7 @@
 -- Users table
 CREATE TABLE users (
-    user_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    id SERIAL PRIMARY KEY,  
+    username VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL
 );
@@ -20,7 +20,7 @@ CREATE TABLE user_ingredients (
     ingredient_id INT NOT NULL,
     quantity VARCHAR(50),
     CONSTRAINT fk_user_ingredients_users
-        FOREIGN KEY (user_id) REFERENCES users(user_id),
+        FOREIGN KEY (user_id) REFERENCES users(id),  
     CONSTRAINT fk_user_ingredients_ingredients
         FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)
 );
@@ -50,11 +50,10 @@ CREATE UNIQUE INDEX ux_ingredients_name ON ingredients(name);
 CREATE INDEX ix_recipes_title ON recipes(title);
 
 -- Sample test users
-INSERT INTO users (name, email, password_hash) VALUES
+INSERT INTO users (username, email, password_hash) VALUES
     ('John Doe', 'john@test.com', '$2a$10$dummyhashedpassword1'),
     ('Jane Smith', 'jane@test.com', '$2a$10$dummyhashedpassword2'),
     ('Test User', 'test@test.com', '$2a$10$dummyhashedpassword3');
-
 
 -- Sample data for ingredients
 INSERT INTO ingredients (name, category) VALUES
@@ -83,8 +82,7 @@ INSERT INTO ingredients (name, category) VALUES
     ('Shrimp', 'Seafood'),
     ('Cabbage', 'Vegetable');
 
-
-    -- Sample user ingredients (John has some ingredients)
+-- Sample user ingredients (John has some ingredients)
 INSERT INTO user_ingredients (user_id, ingredient_id, quantity) VALUES
     (1, 1, '200g'),  -- John has Mozzarella
     (1, 2, '5 cloves'),  -- John has Garlic
