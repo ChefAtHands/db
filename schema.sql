@@ -89,3 +89,11 @@ INSERT INTO user_ingredients (user_id, ingredient_id, quantity) VALUES
     (1, 3, '500g'),  -- John has Chicken
     (2, 8, '3 pieces'),  -- Jane has Bananas
     (2, 12, '12 pieces');  -- Jane has Eggs
+
+-- Logging table
+CREATE TABLE LogEntry (
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    level NVARCHAR(50) NOT NULL,
+    message NVARCHAR(MAX) NOT NULL,
+    created DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+);
